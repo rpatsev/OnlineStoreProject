@@ -1,0 +1,62 @@
+﻿.product_item{
+    border: 1px gray solid;
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 5px;
+    text-align: center;
+    height: 400px;
+    max-width: 400px;
+}
+
+.product_item:hover{
+    box-shadow: 0px 0px 5px black;
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.product_item .product_img{
+    width: 80%;
+}
+
+.vendor_code{
+    font-size: 10px;
+    color: burlywood;
+    text-align: left;
+}
+
+.purchase_price{
+    font-size: 18px;
+    color: forestgreen;
+}
+
+.product_img{
+    height: 240px;
+    max-width: 240px;
+}
+
+.product_img_wrapper{
+    text-align: center;
+}
+
+.inStock{
+    color: green;
+}
+
+.underTheOrder{
+    color: blue;
+}
+
+.mark_badge{
+    background: url('../Files/Images/badge.jpg') no-repeat;
+    width: 60px;
+    height: 60px;
+    padding-top: 10px;
+    background-size: cover;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+
+

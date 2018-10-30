@@ -1,0 +1,18 @@
+﻿@model IEnumerable<OnlineStoreProject.Models.CategoryViewModel>
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach(OnlineStoreProject.Models.CategoryViewModel cat in Model)
+{
+    <div class="category">
+        <a href="/Product/ProductsGroup/@cat.CategoryId">
+            <h3 class="category_name">@cat.Name</h3>
+            <p class="category_description">@cat.Description</p> 
+        </a>
+    </div>
+    <hr/>
+}
+
+

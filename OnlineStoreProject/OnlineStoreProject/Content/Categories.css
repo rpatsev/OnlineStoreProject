@@ -1,0 +1,23 @@
+﻿.category_item {
+    padding: 20px;
+}
+
+.category_item:hover {
+    padding-left: 30px;
+    background-color: coral;
+    transition: 1s;
+}
+
+.category_item a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.category_item a:hover {
+    text-decoration: none;
+}
+
+.category:hover{
+    color: orangered;
+    transition: 0.5s;
+}

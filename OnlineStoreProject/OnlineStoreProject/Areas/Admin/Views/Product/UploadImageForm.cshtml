@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload Photo</h2>
+<hr/>
+<div class="row">
+    <div class="col-xs-12 col-sm-8">
+        @using (Html.BeginForm("UploadImage", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.DropDownList("productId", ViewBag.Products as SelectList);
+            <div class="form-group">
+                <label for="inputImageField">Upload photo</label>
+                <input type="file" name="upload" id="inputImageField">
+                <input type="submit" class="btn btn-danger" value="Save photo">
+                <div class="preview">
+                    <p>Uploading photo</p>
+                    <img id="image_upload_preview" src="~/Files/Images/empty-photo.jpg" alt="your image"/>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <div id="product_img" class="thumbnail"></div>
+    </div>
+</div>
+<script src="~/Scripts/adminProductImage.js"></script>

@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin menu</h2>
+
+@using(Html.BeginForm("SendEmailNotification", "Admin", FormMethod.Post))
+{
+    <div>@Html.TextBox("NewAdmin","", new { @placeholder = "Input admin email"})</div>
+    <input type="submit" value="Send Email">
+}
+
+<p>This section is in the pipeline</p>
+

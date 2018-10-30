@@ -1,0 +1,103 @@
+﻿@model OnlineStoreProject.Models.ProductViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ var p = ViewBag.Product;
+    Dictionary<string, object> productInfo = new Dictionary<string, object>();
+    productInfo.Add("Country", p.Country);
+    productInfo.Add("Manufacturer", p.Manufacturer);
+    productInfo.Add("Alcohol", p.Alcohol + "%");
+    productInfo.Add("Volume", p.Volume / 1000);
+}
+@Scripts.Render("~/bundles/rating")
+@Scripts.Render("~/bundles/jqueryui")
+<h2 class="product_caption">@p.Name</h2>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-4">
+        <p class="vendor_code">Goods No.: @p.ProductId</p>
+        <div class="product_img_wrapper" data-attr="@p.ProductId">
+            <span class="" id="vote_badge"></span>
+            @if (p.ImagePath == null)
+            {
+                <img class="product_img" src="/Files/notfound.png" />
+            }
+            else
+            {
+                <img class="product_img" src="@p.ImagePath.Substring(1)" />
+            }
+        </div>
+        <div class="purchase_price">
+            <p>Price: $@p.Price</p>
+        </div>
+        @if (p.InStock)
+        {
+            <p class="inStock">
+                <i class="glyphicon glyphicon-ok-circle"></i>
+                In Stock
+            </p>
+        }
+        else
+        {
+            <p class="underTheOrder">
+                <i class="glyphicon glyphicon-search"></i>
+                Under The Order
+            </p>
+        }
+        @{
+            string buttonClass = (p.InStock) ? "success" : "info";
+            string buttonCaption = (p.InStock) ? "Purchase" : "Leave order";
+        }
+        <a href="/OrderItem/Create/@p.ProductId"><div class="purchase_button btn btn-@buttonClass btn-lg">
+            <i class="glyphicon glyphicon-shopping-cart"></i>
+            @buttonCaption
+        </div></a>
+    </div>
+    <div class="col-xs-12 col-sm-8">
+        <div class="product_info">
+            <table class="table table-striped">
+                @foreach (var item in productInfo)
+                {
+                    if (item.Value != null)
+                    {
+                        <tr><td>@item.Key</td><td>@item.Value</td></tr>
+                    }
+                }
+            </table>
+        </div>
+        @if( @p.Description != null)
+        {
+            <hr/>
+            <div class="product_description">@p.Description</div>
+            <hr/>
+        }
+       
+        <div id="feedbacks" data-attr="@p.ProductId">
+            <strong><i class="feedback_caption">Please, leave your feedback on item "@p.Name"</i></strong>
+            <div id="feedback_form">
+                <textarea></textarea>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="btn btn-warning" id="sendFeedback">
+                            <i class="glyphicon glyphicon-send"></i>
+                            Send
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <p><strong><em>Please, drag slider to estimate @p.Name </em></strong></p>
+                        <div class="pointsSlider">
+                            <div id="custom-handle" class="ui-slider-handle"></div>
+                        </div>
+                    </div>
+                </div>
+            <div id="feedbacks_list"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+@Scripts.Render("~/bundles/feedbacks")
+@Scripts.Render("~/bundles/vote")
+
+

@@ -1,0 +1,44 @@
+﻿#feedback_form textarea{
+    width: 100%;
+    max-width: none;
+    resize: vertical;
+}
+
+#feedback_form textarea:focus {
+    box-shadow: 0px 0px 6px green;
+    transition: 1s;
+}
+
+.panel{
+    position: relative;
+}
+
+.controls{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+#custom-handle {
+    width: 3em;
+    height: 1.6em;
+    top: 50%;
+    margin-top: -.8em;
+    text-align: center;
+    line-height: 1.6em;
+}
+
+.pointsSlider{
+    margin: 20px;
+}
+
+.panel-body{
+    position: relative;
+}
+
+.rating{
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    cursor: none;
+}

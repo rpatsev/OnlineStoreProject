@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Order</h2>
+
+<div class="post_order_message">
+    <p>Thank you for your order!</p>
+    <p>As soon as we process it, our manager will be in touch with you to get more details</p>
+    <p>Thanks for purchase!</p>
+</div>
+
+    @Html.ActionLink("Move back to website", "", new {controller = "Category"}, new { @class= "btn btn-success" })

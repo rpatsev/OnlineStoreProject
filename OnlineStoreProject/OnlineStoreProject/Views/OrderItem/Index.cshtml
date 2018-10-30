@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{var products = ViewBag.Products;
+    int minItemsNumber = 1;
+    int maxItemsNumber = 10;
+    }
+<h2>Cart</h2>
+
+@if(products == null)
+{
+    <p>Your cart is empty. Please, move to the catalogue page to make new order</p>
+}
+else
+{
+    foreach (OnlineStoreProject.Models.ProductViewModel product in products)
+    {
+        <div class="order_item">
+            <div class="row">
+                <div class="col-xs-6 col-sm-3">
+                    <div class="order_img">       
+                        @{ string imageSource = (product.ImagePath != null) ? product.ImagePath.Substring(1) : "/Files/notfound.png"; }
+                           <img src=@imageSource alt=@product.Name/>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-9">
+                    <p class="order_item_name">@Html.ActionLink(product.Name, "Details", "Product", new { @id = product.ProductId }, null)</p>
+                    <p class="order_item_price">Price: $@product.Price</p>
+                    @if (product.InStock)
+                    {
+                        <p class="inStock">
+                            <i class="glyphicon glyphicon-ok-circle"></i>
+                            In Stock
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="underTheOrder">
+                            <i class="glyphicon glyphicon-search"></i>
+                            Under The Order
+                        </p>
+                    }
+                    <div class="items">
+                        <span class="items_caption">Select number</span>
+                        @Html.DropDownList("Items", new SelectList(Enumerable.Range(minItemsNumber, maxItemsNumber)), new { @class = "items_amount" })
+                    </div>
+                </div>
+                <div class="remove_order_item"><a href="/OrderItem/Delete/@product.ProductId"><i class="glyphicon glyphicon-remove"></i></a></div>
+                <input class="product_price" type="hidden" value="@product.Price"/>
+                <input class="product_id" type="hidden" value="@product.ProductId"/>
+            </div>
+        </div>
+    }
+
+    <p class="total_sum_field">Total sum: $<span id="total_sum"></span></p>
+    @Html.ActionLink("Submit order", "Create", new { @controller = "Order"}, new { @class = "btn btn-danger"})
+    @Scripts.Render("~/bundles/cart")
+}
+
+

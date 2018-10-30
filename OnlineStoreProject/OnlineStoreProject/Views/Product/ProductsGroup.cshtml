@@ -1,0 +1,43 @@
+﻿@model IEnumerable<OnlineStoreProject.Models.ProductViewModel>
+@{
+    ViewBag.Title = "ProductsGroup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Category</h2>
+<div class="row">
+@if(Model.Count() == 0)
+{
+    <b>No products from category @ViewBag.Category</b>
+}
+@foreach (OnlineStoreProject.Models.ProductViewModel product in Model)
+{
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <a href="/Product/Details/@product.ProductId">
+            <div class="product_item">
+                <p class="vendor_code">Vendor Code: @product.ProductId</p>
+                <b class="product_name">@product.Name</b>
+                <div>
+                    @if(product.ImagePath == null)
+                    {
+                        <img class="product_img" src="/Files/notfound.png"/>
+                    }
+                    else
+                    {
+                        <img class="product_img" src="@product.ImagePath.Substring(1)"/>
+                    }
+                </div>
+                <p class="country">Country: @product.Country<p>
+                <p class="price">Price: $@product.Price</p>
+                <a href="/OrderItem/Create/@product.ProductId">
+                    <div class="btn btn-success btn-md purchase_button">
+                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                        Purchase
+                    </div>
+                </a>
+            </div>
+        </a>
+    </div>
+}
+</div>
+
