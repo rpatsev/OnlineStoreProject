@@ -16,5 +16,9 @@ namespace OnlineStoreProject.BLL.Interfaces
         Task SetInitialData(UserModel admin, List<string> roles);
         UserModel GetUserData(string userid);
 
+        IEnumerable<UserModel> GetAllUsersByRole(string roleName);
+        void DenyAdminRights(string userId);
+        void EditPersonalData(UserModel userModel);
+
     }
 }

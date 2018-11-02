@@ -11,5 +11,7 @@ namespace OnlineStoreProject.DAL.Interfaces
     public interface IClientManager : IDisposable
     {
         void Create(ClientProfile item);
+        void Update(ClientProfile item);
+        ClientProfile Get(string id);
     }
 }

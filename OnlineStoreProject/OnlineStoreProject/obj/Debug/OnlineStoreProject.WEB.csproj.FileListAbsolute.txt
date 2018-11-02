@@ -143,3 +143,7 @@ C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject\bin\ActionMailer.Ne
 C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject\bin\ActionMailer.Net.xml
 C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject\bin\ActionMailer.Net.Mvc.pdb
 C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject\bin\ActionMailer.Net.Mvc.xml
+C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject\bin\MailChimp.Net.dll
+C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject\bin\MailChimp.dll
+C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject\bin\ServiceStack.Text.dll
+C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject\bin\ServiceStack.Text.xml

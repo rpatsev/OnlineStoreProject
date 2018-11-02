@@ -82,6 +82,11 @@ namespace OnlineStoreProject.BLL.Services
             return this.GetAllOrders().OrderByDescending(o => o.OrderId).FirstOrDefault();
         }
 
+        public IEnumerable<OrderModel> GetOrdersByUser(string userId)
+        {
+            return this.GetAllOrders().Where(c=>c.UserId == userId);
+        } 
+
         public OrderItemModel GetOrderItem(int id)
         {
             throw new NotImplementedException();

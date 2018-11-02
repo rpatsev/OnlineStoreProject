@@ -18,11 +18,13 @@ namespace OnlineStoreProject.BLL.DTO
             City = user.ClientProfile.City;
             Address = user.ClientProfile.Address;
             Role = user.Roles.ToString();
+            PhoneNumber = user.ClientProfile.PhoneNumber;
         }
         public UserModel(){ }
         public string Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
+        public string PhoneNumber { get; set; }
         public string Password { get; set; }
         public DateTime? BirthDate { get; set; }
         public DateTime? RegisteredAt { get; set; }

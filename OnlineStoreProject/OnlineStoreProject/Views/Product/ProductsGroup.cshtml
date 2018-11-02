@@ -18,21 +18,25 @@
                 <p class="vendor_code">Vendor Code: @product.ProductId</p>
                 <b class="product_name">@product.Name</b>
                 <div>
-                    @if(product.ImagePath == null)
+                    @if (product.ImagePath == null)
                     {
-                        <img class="product_img" src="/Files/notfound.png"/>
+                        <img class="product_img" src="/Files/notfound.png" />
                     }
                     else
                     {
-                        <img class="product_img" src="@product.ImagePath.Substring(1)"/>
+                        <img class="product_img" src="@product.ImagePath.Substring(1)" />
                     }
                 </div>
                 <p class="country">Country: @product.Country<p>
                 <p class="price">Price: $@product.Price</p>
+                @{
+                    string buttonClass = (product.InStock) ? "success" : "info";
+                    string buttonCaption = (product.InStock) ? "Purchase" : "Leave order";
+                }
                 <a href="/OrderItem/Create/@product.ProductId">
-                    <div class="btn btn-success btn-md purchase_button">
+                    <div class="purchase_button btn btn-@buttonClass btn-md">
                         <i class="glyphicon glyphicon-shopping-cart"></i>
-                        Purchase
+                        @buttonCaption
                     </div>
                 </a>
             </div>

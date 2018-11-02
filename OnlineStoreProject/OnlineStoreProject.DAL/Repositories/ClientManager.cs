@@ -4,6 +4,8 @@ using OnlineStoreProject.DAL.Identity;
 using OnlineStoreProject.DAL.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,17 @@ namespace OnlineStoreProject.DAL.Repositories
         {
             Database.ClientProfiles.Add(item);
             Database.SaveChanges();
+        }
+
+        public void Update(ClientProfile item)
+        {
+            Database.ClientProfiles.AddOrUpdate(item);
+            Database.SaveChanges();
+        }
+
+        public ClientProfile Get(string id)
+        {
+            return Database.ClientProfiles.Find(id);
         }
 
         public void Dispose()

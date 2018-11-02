@@ -1,88 +1,68 @@
-﻿using System;
+﻿using OnlineStoreProject.Areas.Admin.Models;
+using OnlineStoreProject.BLL.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
 namespace OnlineStoreProject.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin, superadmin")]
     public class AdminController : Controller
     {
+        private IAuthService authService;
+        public AdminController(IAuthService _service)
+        {
+            this.authService = _service;
+        }
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Admin/Admin/Details/5
-        public ActionResult Details(int id)
+        public ActionResult SendEmailNotification(EmailModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    model.RegistrationLink = "http://10.10.43.8/Account/AdminRegister/";
+                    model.Subject = "Admin invitation";
+                    model.Sender = "alcostore.online@gmail.com";
+                    new EmailController().SendEmail(model).Deliver();
+                    return RedirectToAction("Success");
+                }
+                catch (Exception)
+                {
+                    return RedirectToAction("Error");
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult GetAdministratorsList()
+        {
+            var admins = authService.GetAllUsersByRole("admin");
+            return Json(admins, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize(Roles ="superadmin")]
+        public void Remove(string id)
+        {
+            authService.DenyAdminRights(id);
+        }
+
+        public ActionResult Success()
         {
             return View();
         }
 
-        // GET: Admin/Admin/Create
-        public ActionResult Create()
+        public ActionResult Error()
         {
             return View();
-        }
-
-        // POST: Admin/Admin/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/Admin/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Admin/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Admin/Admin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Admin/Admin/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
+
 }

@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Error</h2>
+
+<p>Sorry, error occured while sending Email. Please, try again</p>
+<div class="btn btn-default">@Html.ActionLink("Back", "Index", "Admin", new { @area = "Admin" })</div>

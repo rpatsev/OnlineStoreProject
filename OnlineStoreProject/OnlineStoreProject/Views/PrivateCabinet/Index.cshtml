@@ -1,0 +1,37 @@
+﻿@model OnlineStoreProject.Models.PersonalDataViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Private Cabinet</h2>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h4>Personal Data</h4>
+        <div id="personal_data">
+            <div class="btn edit_personal_data">
+                <a href="/PrivateCabinet/Edit">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </a>
+            </div>
+                <dl class="form_wrapper">
+                @foreach(var prop in ViewData.ModelMetadata.Properties)
+                {
+                string value = (prop.Model != null) ? prop.Model.ToString() : "-- no data --";
+                    if (prop.PropertyName != "UserId")
+                    {
+                        <dt class="form_label">@(prop.DisplayName ?? prop.PropertyName)</dt>
+                        <dd class="form_value">@value</dd>
+                    }
+                }
+            </dl>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-lg-6" id="client_orders"></div>
+    <div class="col-xs-12 col-lg-6" id="client_feedbacks"></div>
+
+</div>
+
+<script src="~/Scripts/privatecabinet.js"></script>

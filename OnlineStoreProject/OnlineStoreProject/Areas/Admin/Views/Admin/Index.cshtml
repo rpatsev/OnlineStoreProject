@@ -8,9 +8,11 @@
 
 @using(Html.BeginForm("SendEmailNotification", "Admin", FormMethod.Post))
 {
-    <div>@Html.TextBox("NewAdmin","", new { @placeholder = "Input admin email"})</div>
-    <input type="submit" value="Send Email">
+    <span>@Html.TextBox("Recepient", "", new { @placeholder = "Input admin email", @class = "form-control"})</span>
+    <span><input class="btn" type="submit" value="Send Email"></span>
 }
 
-<p>This section is in the pipeline</p>
+    <h3>Administrators List</h3>
+    <div id="jsGrid"></div>
+    <script src="~/Scripts/grids/administrators.js"></script>
 

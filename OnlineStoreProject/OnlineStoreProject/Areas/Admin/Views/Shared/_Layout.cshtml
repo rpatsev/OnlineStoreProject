@@ -26,6 +26,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav"></ul>
+                @*@Html.Partial("_LoginPartial")*@
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="javascript:void(0)">Hello, Admin @User.Identity.Name !</a></li>
+                    <li>@Html.ActionLink("LogOut", "LogOff", "Account", new { area = "" }, new { @class = "pull-right" })</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -36,7 +41,7 @@
                 <ul>
                     <li>@Html.ActionLink("Admin page", "Index", "Admin", new { area = "Admin" }, new { @class = "" })</li>
                     <li>@Html.ActionLink("Categories", "Index", "Category", new { area = "Admin" }, new { @class = "" })</li>
-                    <li>@Html.ActionLink("Products", "Index", "Product", new { area = "Admin"}, new { @class = ""})</li>
+                    <li>@Html.ActionLink("Products", "Index", "Product", new { area = "Admin" }, new { @class = "" })</li>
                     <li>@Html.ActionLink("Orders", "Index", "Order", new { area = "Admin" }, new { @class = "" })</li>
                 </ul>
             </div>

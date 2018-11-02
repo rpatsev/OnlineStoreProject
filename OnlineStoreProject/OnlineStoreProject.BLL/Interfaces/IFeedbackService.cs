@@ -11,6 +11,7 @@ namespace OnlineStoreProject.BLL.Interfaces
     public interface IFeedbackService
     {
         IEnumerable<FeedbackModel> GetFeedbacksForItem(int id);
+        IEnumerable<FeedbackModel> GetFeedbacksByUser(string userid);
         FeedbackModel GetFeedback(int id);
         float? GetAverageMark(int id);
         void PostFeedback(FeedbackModel feedback);

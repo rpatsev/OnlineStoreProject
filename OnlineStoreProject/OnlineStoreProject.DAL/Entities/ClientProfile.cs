@@ -21,6 +21,7 @@ namespace OnlineStoreProject.DAL.Entities
         public DateTime? RegisteredAt { get; set; }
         public string City { get; set; }
         public string Address { get; set; }
+        public string PhoneNumber { get; set; }
         public ICollection<Order> Orders { get; set; }
         public ICollection<Feedback> Feedbacks { get; set; }
         public ClientProfile()

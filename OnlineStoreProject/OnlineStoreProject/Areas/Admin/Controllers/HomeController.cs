@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace OnlineStoreProject.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin, superadmin")]
     public class HomeController : Controller
     {
         public ActionResult Index()

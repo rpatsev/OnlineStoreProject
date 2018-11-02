@@ -1,0 +1,62 @@
+﻿#personal_data,
+#edit_personal_data_field {
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#personal_data {
+    background-color: antiquewhite;
+}
+
+#edit_personal_data_field {
+    background-color: azure;
+}
+
+
+@media (min-width: 14em) {
+    .form_wrapper {
+        display: grid;
+        grid-template-columns: auto 1fr;
+    }
+
+    .form_label {
+        min-width: 0;
+    }
+
+    .form_value {
+        margin: 0 0 0 1em;
+    }
+}
+
+
+.edit_personal_data,
+.submit_personal_data_changes {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.no_data_message{
+    font-size: 0.7em;
+    opacity: 0.7;
+}
+
+.feedback_product_img,
+.order_product_img{
+    width: 120px;
+}
+
+.order_details{
+    display: none;
+}
+
+.user_rating{
+    float: right;
+    margin-bottom: 0px;
+}
+
+.user_order_item > .panel-heading{
+    height: 55px;
+}

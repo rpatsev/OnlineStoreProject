@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -63,7 +64,8 @@ namespace OnlineStoreProject.Controllers
                     {
                         IsPersistent = true
                     }, claim);
-                    return RedirectToAction("Index", "Home");
+                    string area = (claim.Claims.Where(c=>c.Value == "admin").SingleOrDefault() != null) ? "Admin" : string.Empty;
+                    return RedirectToAction("Index", "Home", new { @area = area});
 
                 }
             }
@@ -80,6 +82,13 @@ namespace OnlineStoreProject.Controllers
         public ActionResult Register()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult AdminRegister()
+        {
+            ViewBag.Role = "admin";
+            return View("Register");
         }
 
 
@@ -99,12 +108,13 @@ namespace OnlineStoreProject.Controllers
                     Address = model.Address,
                     BirthDate = model.BirthDate,
                     City = model.City,
-                    Role = "user"
+                    Role = model.Role ?? "user",
                 };
                 OperationDetails operationDetails = await authService.Create(userModel);
                 if (operationDetails.Succeded)
                 {
-                    return RedirectToAction("Index","Home");
+                    string area = (model.Role == "admin") ? "Admin" : string.Empty;
+                    return RedirectToAction("Index", "Home" , new { @area = area });
                 }
                 else
                 {

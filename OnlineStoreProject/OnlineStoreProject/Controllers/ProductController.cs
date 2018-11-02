@@ -32,7 +32,8 @@ namespace OnlineStoreProject.Controllers
                 itemsList.Add(new ProductViewModel(product));
             }
             ViewBag.Category = service.GetCategory(id).Name;
-            return View(itemsList);
+            var sortedItemsList = itemsList.OrderByDescending(c => c.InStock);
+            return View(sortedItemsList);
         }
 
         public ActionResult Details(int id)

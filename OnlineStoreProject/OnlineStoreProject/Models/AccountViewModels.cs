@@ -83,10 +83,13 @@ namespace OnlineStoreProject.Models
 
         public string Address { get; set; }
         public string City { get; set; }
-
+        [Display(Name = "Contact Number")]
+        public string PhoneNumber { get; set; }
         [Display(Name = "Name")]
         public string UserName { get; set; }
         public DateTime? BirthDate { get; set; }
+
+        public string Role { get; set; }
 
     }
 

@@ -39,7 +39,13 @@ namespace OnlineStoreProject.BLL.Services
         public IEnumerable<FeedbackModel> GetFeedbacksForItem(int id)
         {
             var allFeedbacks = this.GetAllFeedbacks();
-            return allFeedbacks.Where(f => f.ProductId == id).Select(f=>f).AsEnumerable();
+            return allFeedbacks.Where(f => f.ProductId == id).AsEnumerable();
+        }
+
+        public IEnumerable<FeedbackModel> GetFeedbacksByUser(string userid)
+        {
+            var allFeedbacks = this.GetAllFeedbacks();
+            return allFeedbacks.Where(f => f.UserId == userid).AsEnumerable();
         }
 
         public float? GetAverageMark(int id)

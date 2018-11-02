@@ -13,6 +13,7 @@ namespace OnlineStoreProject.BLL.Interfaces
         void CreateOrder(string userId);
         IEnumerable<OrderItemModel> GetAllOrderItems();
         IEnumerable<OrderModel> GetAllOrders();
+        IEnumerable<OrderModel> GetOrdersByUser(string userId);
         OrderModel GetOrder(int id);
         OrderModel GetLastOrder();
         OrderItemModel GetOrderItem(int id);

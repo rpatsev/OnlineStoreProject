@@ -1,0 +1,28 @@
+﻿@model OnlineStoreProject.Areas.Admin.Models.EmailModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+    <div class="admin_mail">
+        <h1 style="text-align: center;">@Model.Subject</h1>
+
+        <p>Congratulations!!!</p>
+        <br/>
+        <p>You have been chosen as administrator of Alcostore Online Shop</p>
+        <p>Please, register to receive access to the website admin page</p>
+        <br/>
+        <p>Follow this 
+            <a href="@Model.RegistrationLink" target="_blank">link</a>
+        to get to the registration page. </p>
+            
+        <br/>
+        <p>If you did not expect to receive this page, please, ignore it.</p>
+        <p>Sincerely yours,<br />Alcostore Team</p>
+    </div>
+</body>
+</html>

@@ -31,3 +31,4 @@ C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject.DAL\obj\Debug\Onlin
 C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject.DAL\obj\Debug\OnlineStoreProject.DAL.csproj.GenerateResource.cache
 C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject.DAL\obj\Debug\OnlineStoreProject.DAL.Migrations.Initial.resources
 C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject.DAL\obj\Debug\OnlineStoreProject.DAL.Migrations.intUserIdPropRemove.resources
+C:\patron\FinalProject\OnlineStoreProject\OnlineStoreProject.DAL\obj\Debug\OnlineStoreProject.DAL.Migrations.PhoneNumberAdded.resources

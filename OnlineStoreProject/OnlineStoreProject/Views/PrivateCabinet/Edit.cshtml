@@ -1,0 +1,35 @@
+﻿@model OnlineStoreProject.Models.PersonalDataViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Personal Data</h2>
+<div id="edit_personal_data_field">
+    @using (Html.BeginForm("SubmitChanges", "PrivateCabinet", FormMethod.Post, new { @id = "SubmitChanges"}))
+    {
+        <div class="btn submit_personal_data_changes">
+            <a href="javascript:document.getElementById('SubmitChanges').submit()">
+                <i class="glyphicon glyphicon-ok"></i>
+            </a>
+        </div>
+        <dl class="form_wrapper">
+            @{string[] editableProps = new[] { "City", "PhoneNumber", "BirthDate", "Address" }; }
+            @foreach (var prop in ViewData.ModelMetadata.Properties)
+            {
+                if (editableProps.Contains(prop.PropertyName))
+                {
+                    <dt class="form_label">@(prop.DisplayName ?? prop.PropertyName)</dt>
+                    if (prop.PropertyName == "BirthDate")
+                    {
+                        <dd class="form_value"><input type="date" name="BirthDate" id="BirthDate" value="@Model.BirthDate "/></dd>
+                    }
+                    else
+                    {
+                        <dd class="form_value">@Html.Editor(prop.PropertyName)</dd>
+                    }
+                }
+            }
+        </dl>
+    }
+</div>

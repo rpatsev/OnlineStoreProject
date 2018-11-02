@@ -54,6 +54,7 @@ namespace OnlineStoreProject
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/order.css",
+                      "~/Content/privatecabinet.css",
                       "~/Content/homepage.css",
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
